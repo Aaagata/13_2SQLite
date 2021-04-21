@@ -31,8 +31,8 @@ def zadania():
             db.commit()
             return redirect(url_for('zadania'))
 
-    kursor = get_db("db.sqlite").execute('SELECT * from zadania ORDER BY czy_zrobione desc;')
-    zadania = kursor.fetchall()
+    cursor = get_db("db.sqlite").execute('SELECT * from zadania ORDER BY czy_zrobione desc;')
+    zadania = cursor.fetchall()
     return render_template('zadania_lista.html', zadania=zadania, error=error)
 
 @app.route('/zrobione', methods=['POST'])
