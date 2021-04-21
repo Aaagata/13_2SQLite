@@ -40,7 +40,7 @@ def zrobione():
     """Zmiana statusu zadania na wykonane."""
     zadanie_id = request.form['id']
     db = get_db("db.sqlite")
-    get_db("db.sqlite").execute('UPDATE zadania SET czy_zrobione=1 WHERE id=?', [zadanie_id])
+    db.execute('UPDATE zadania SET czy_zrobione=1 WHERE id=?', [zadanie_id])
     db.commit()
     return redirect(url_for('zadania'))
 

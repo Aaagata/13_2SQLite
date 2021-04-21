@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>{{ config.SITE_NAME }}:</h1>
+    <h1>Lista moich zadań:</h1>
 
     <!-- formularz dodawania zadania -->
     <form class="add-form" method="POST" action="{{ url_for('zadania') }}">
@@ -18,14 +18,14 @@
       {% for zadanie in zadania %}
         
         <li>
-          <td>{{ zadanie.tytuł }}</td>
-          <td>{{ zadanie.opis }}</td>
+          <td>{{ zadanie[1] }}</td>
+          <td>{{ zadanie[2] }}</td>
         </li>  
           <!-- formularz zmiany statusu zadania -->
           {% if not zadanie.zrobione %}
             <form method="POST" action="{{ url_for('zrobione') }}">
               <!-- wysyłamy jedynie informacje o id zadania -->
-              <input type="hidden" name="id" value="{{ zadanie.id }}"/>
+              <input type="hidden" name="id" value="{{ zadanie[0] }}"/>
               <button type="submit">Zrobione!</button>
             </form>
           {% endif %}
