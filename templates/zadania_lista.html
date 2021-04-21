@@ -16,7 +16,11 @@
     <ol>
       <!-- wypisujemy kolejno wszystkie zdania -->
       {% for zadanie in zadania %}
+        
         <li>
+          <td>{{ zadanie.tytuł }}</td>
+          <td>{{ zadanie.opis }}</td>
+        </li>  
           <!-- formularz zmiany statusu zadania -->
           {% if not zadanie.zrobione %}
             <form method="POST" action="{{ url_for('zrobione') }}">
